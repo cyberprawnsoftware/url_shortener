@@ -192,3 +192,123 @@ flowchart TD
     J -- Yes --> K[Render page\neg. homepage]
     J -- No --> L[Nuxt 404]
 ```
+
+## Example requests and responses
+
+### Shorten a URL
+
+Request:
+```bash
+curl -X POST http://localhost:3000/api/shorten \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"url": "https://www.google.com"}'
+```
+
+Response:
+```json
+{
+    "success": true,
+    "existing": false,
+    "message": "Your shortened URL is ready:",
+    "slug": "twO8UA",
+    "short": "http://localhost:3000/twO8UA",
+    "expiresAt": null
+}
+```
+
+---
+
+### With expiry
+
+Request:
+```bash
+curl -X POST http://localhost:3000/api/shorten \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"url": "www.facebook.com", "expiresIn": 30}'
+```
+
+Response:
+```json
+{
+    "success": true,
+    "existing": false,
+    "message": "Your shortened URL is ready:",
+    "slug": "NuRmzQ",
+    "short": "http://localhost:3000/NuRmzQ",
+    "expiresAt": 1774872404844
+}
+```
+
+---
+
+### Shorten a URL
+
+Request:
+```bash
+curl -X POST http://localhost:3000/api/shorten \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"url": "https://www.google.com"}'
+```
+
+Response:
+```json
+{
+    "success": true,
+    "existing": false,
+    "message": "Your shortened URL is ready:",
+    "slug": "twO8UA",
+    "short": "http://localhost:3000/twO8UA",
+    "expiresAt": null
+}
+```
+
+---
+
+### Same URL
+
+Request:
+```bash
+curl -X POST http://localhost:3000/api/shorten \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"url": "www.google.com"}'
+```
+
+Response:
+```json
+{
+    "success": true,
+    "existing": true,
+    "message": "This URL has already been shortened:",
+    "slug": "twO8UA",
+    "short": "http://localhost:3000/twO8UA",
+    "clicks": 0,
+    "expiresAt": null
+}
+```
+
+---
+
+### URL stats
+
+Request:
+```bash
+curl -X GET http://localhost:3000/api/url-stats/twO8UA \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json"
+```
+
+Response:
+```json
+{
+    "success": true,
+    "slug": "twO8UA",
+    "url": "https://www.google.com",
+    "clicks": 0,
+    "createdAt": 1772280116481,
+    "expiresAt": null
+}
+```
