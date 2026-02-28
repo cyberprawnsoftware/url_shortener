@@ -312,3 +312,11 @@ Response:
     "expiresAt": null
 }
 ```
+
+## Future improvements
+
+### Dashboard
+A view with a simple paginated/searchable table of all shortened URLs would be a good starting point, using the stats endpoint for detail views. Could even be extended into a user area with the ability to extend or delete urls.
+
+### Components
+I would have liked to have abstracted the repeated code into more reusable components, the form inputs and button for example.

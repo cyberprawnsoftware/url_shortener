@@ -53,12 +53,12 @@
 
 <script lang="ts">
 import type { ShortenResponse, ShortenResult } from '~/types/shorten';
-import ArrowRightIcon from "~/components/arrow-right.vue";
+import ArrowRightIconIcon from "~/components/arrow-right-icon.vue";
 
 export default defineNuxtComponent({
     name: "ShortenForm",
 
-    components: { ArrowRightIcon },
+    components: { ArrowRightIcon: ArrowRightIconIcon },
 
     emits: ['success', 'error'],
 

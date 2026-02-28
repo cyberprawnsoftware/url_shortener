@@ -12,6 +12,7 @@ export default defineEventHandler(async (event) => {
 
     if (!entry) {
         setResponseStatus(event, 404);
+
         return {
             success: false,
             errors: ['Short URL not found.']
