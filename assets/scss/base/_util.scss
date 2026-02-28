@@ -1,0 +1,6 @@
+@use "sass:math";
+@use 'vars' as *;
+
+@function px2rem($px) {
+  @return math.div($px, $base-size) + rem;
+}
